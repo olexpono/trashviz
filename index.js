@@ -21,14 +21,14 @@ fs.readFile("landfills.geojson", "utf8", function(err, data) {
 
 app.get("/landfills.json", function(req, res) {
   res.writeHead(200, {"Content-Type": "application/json"});
-  res.write("{}");
+  res.write(landfills_string);
   res.end();
 });
 
 /* Homepage */
 app.get("/", function(req, res) {
   res.render("index", {
-    landfills: landfills_data
+    landfills: landfills_data["features"]
   }, function(err, html) {
     res.end(html);
   });

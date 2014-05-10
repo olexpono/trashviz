@@ -1,5 +1,51 @@
-body {
-  background: whitesmoke;
+@gray: #b1b1b3;
+@offwhite: #f5f5f5;
+@offblack: #252525;
+@darkgray: #313131;
+
+@body-fs: 20px;
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
+img {
+  max-width: 100%;
+}
 
+body {
+  font-family: "lexia", Lato, Georgia;
+}
+
+.header-container,
+.content-container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.site-title {
+  margin: 2em 0;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.landfills {
+}
+
+.landfill {
+  padding: 15px 0;
+  list-style: none;
+  border-bottom: 1px solid @gray;
+}
+
+.landfill h1 {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.landfill .state {
+  margin-bottom: 1em;
+}

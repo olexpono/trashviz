@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Trash Visualization</title>
-    <meta name="description">Viz of all the Landfills in America.</meta>
+    <title>Landfill Club – Explore US Landfills by Area</title>
+    <meta name="description" content="Viz of all the Landfills in America.">
     <meta name="author" content="EcoHack Spring '14">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/main.css">
 
-    <script type="text/javascript" src="//use.typekit.net/gjw6oct.js"></script>
+    <script type="text/javascript" src="//use.typekit.net/yex6lso.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   </head>
   <body>
     <div class="header-container">
       <header class="header">
-        <h1 class="site-title">Trash Viz</h1>
+        <h1 class="site-title">Landfills by Area</h1>
       </header>
+    </div>
+    <div class="content-container">
+      <section rel="main" class="content">
+        <ol class="landfills">
+          <% for (var i=0; i < landfills.length; i++) { %>
+            <li class="landfill">
+              <h1><%= landfills[i]["properties"]["Facility_Street"] %></h1>
+              <h2 class="state"><%= landfills[i]["properties"]["Facility_State"] %></h1>
+              <a href="https://www.google.com/maps/?ll=<%= landfills[i]["geometry"]["coordinates"][0][0][1] %>,<%= landfills[i]["geometry"]["coordinates"][0][0][0] %>&z=15&t=k">Search Location in Google Maps</a>
+            </li>
+          <% } %>
+        </ol>
+      </section>
     </div>
     <script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="/js/trash-min.js"></script>
