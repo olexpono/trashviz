@@ -22,13 +22,20 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "http://github.com/tholex/kiev"
+    "url": "http://github.com/tholex/trashviz"
   },
-  "author": "tholex",
+  "contributors": [
+     "elw307@nyu.edu",
+     "nejohnson2@gmail.com",
+     "kim@squarewater.com",
+     "emilysturdivant@gmail.com",
+     "jonathanelevy@gmail.com",
+     "tholex@gmail.com"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tholex/kiev/issues"
+    "url": "https://github.com/tholex/trashviz/issues"
   },
-  "homepage": "https://github.com/tholex/kiev"
+  "homepage": "https://github.com/tholex/trashviz"
 }
 

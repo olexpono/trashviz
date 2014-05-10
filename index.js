@@ -23,5 +23,5 @@ app.get("/", function(req, res) {
   });
 });
 
-console.log("Starting app kiev on port ", config.port);
+console.log("Starting app trashviz on port ", config.port);
 app.listen(config.port);
