@@ -1,0 +1,1 @@
+$(function(){$(".quote").removeClass("hidden")});
