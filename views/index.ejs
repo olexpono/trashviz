@@ -17,21 +17,31 @@
       <header class="header">
         <h1 class="site-title">Landfills by Area</h1>
       </header>
+      <section class="map">
+        <iframe width="100%" height="400" src="https://render.githubusercontent.com/view/geojson?url=https%3A%2F%2Fraw.githubusercontent.com%2Ftholex%2Ftrashviz%2Fmaster%2Flandfills.geojson#f0c667a1-4844-4de9-b98d-01b47fe6a492" sandbox="allow-scripts allow-same-origin"></iframe>
+      </section>
     </div>
     <div class="content-container">
       <section rel="main" class="content">
         <ol class="landfills">
           <% for (var i=0; i < landfills.length; i++) { %>
             <li class="landfill">
-              <h1><%= landfills[i]["properties"]["Facility_Street"] %></h1>
-              <h2 class="state"><%= landfills[i]["properties"]["Facility_State"] %></h1>
-              <a href="https://www.google.com/maps/?ll=<%= landfills[i]["geometry"]["coordinates"][0][0][1] %>,<%= landfills[i]["geometry"]["coordinates"][0][0][0] %>&z=15&t=k">Search Location in Google Maps</a>
+              <div id="landfill-<%= landfills[i]["properties"]["id"] %>" class="landfill-shape">
+                <canvas></canvas>
+              </div>
+              <div class="landfill-metadata">
+                <h1><%= landfills[i]["properties"]["Facility_Street"] %></h1>
+                <h2 class="state">State: <%= landfills[i]["properties"]["Facility_State"] %></h1>
+                <h2 class="state">Area: <%= landfills[i]["properties"]["area"][0]["area"] %> m<sup>2</sup></h1>
+                <a href="https://www.google.com/maps/?ll=<%= landfills[i]["geometry"]["coordinates"][0][0][1] %>,<%= landfills[i]["geometry"]["coordinates"][0][0][0] %>&z=15&t=k">Location in Google Maps</a>
+              </div>
             </li>
           <% } %>
         </ol>
       </section>
     </div>
     <script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/js/sketch.js"></script>
     <script type="text/javascript" src="/js/trash-min.js"></script>
   </body>
 </html>

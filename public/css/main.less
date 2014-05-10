@@ -21,7 +21,7 @@ body {
 
 .header-container,
 .content-container {
-  max-width: 720px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -33,12 +33,34 @@ body {
 }
 
 .landfills {
+  font-size: 0;
+  > * {
+    font-size: 16px;
+  }
 }
 
 .landfill {
+  position: relative;
+  display: inline-block;
+  left: -10px;
+  width: 50%;
   padding: 15px 0;
   list-style: none;
-  border-bottom: 1px solid @gray;
+  min-height: 180px;
+
+  &:nth-child(2n) {
+    left: 10px;
+  }
+}
+
+.landfill-shape {
+  margin: 0 auto;
+  background: #e3e3e3;
+  height: 300px;
+  width: 300px;
+}
+
+.landfill-metadata {
 }
 
 .landfill h1 {
@@ -46,6 +68,21 @@ body {
   font-weight: 800;
 }
 
+a {
+  color: @gray;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .landfill .state {
   margin-bottom: 1em;
+}
+
+
+sup {
+  font-size: 70%;
+  position: relative;
+  bottom: 0.4em;
 }
