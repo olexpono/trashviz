@@ -25,16 +25,28 @@
     </div>
     <div class="content-container">
       <section class="map">
+        <h1></h1>
+        <iframe  width="100%" height="500" src="http://levy.cartodb.com/viz/061d10b6-d894-11e3-8c00-0edbca4b5057/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=&zoom=3&center_lat=38.16911413556086&center_lon=-94.833984375"></iframe>
+      </section>
+      <section class="map">
+        <h1></h1>
+        <iframe  width="100%" height="500" src="http://levy.cartodb.com/viz/5716ba7a-d895-11e3-843b-0edbca4b5057/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=&zoom=3&center_lat=36.527294814546245&center_lon=-88.24218749999999"></iframe>
+      </section>
+      <section class="map">
+        <h1></h1>
+        <iframe  width="100%" height="500" src="http://levy.cartodb.com/viz/852c197e-d894-11e3-a282-0e230854a1cb/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=&zoom=2&center_lat=48.28319289548349&center_lon=-94.921875"></iframe>
+      </section>
+      <!-- <section class="map">
         <h1>Number of People Per Landfill</h1>
         <img src="/img/number-of-landfills-per-capita.jpg" />
       </section>
       <section class="map">
         <h1>Number of Landfills per State</h1>
         <img src="/img/number-of-landfills-per-state.jpg" />
-      </section>
+      </section> -->
       <section class="map">
         <h1>Landfills by Size</h1>
-        <iframe width="100%" height="500" src="http://bl.ocks.org/andrewxhill/raw/5588148/"></iframe>
+        <iframe width="100%" height="500" src="http://jossphilippe.cartodb.com/viz/d819f722-d881-11e3-b4b6-0e230854a1cb/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=false&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=WITH%20RECURSIVE%20dims%20AS%20(SELECT%202*sqrt(sum(ST_Area(the_geom)))%20as%20d%2C%20sqrt(sum(ST_Area(the_geom)))%2F20%20as%20w%2C%20count(*)%20as%20rows%20FROM%20landfills%20WHERE%20the_geom%20IS%20NOT%20NULL)%2C%20%20%20geoms%20AS%20(SELECT%20the_geom%2C%20cartodb_id%2C%20ST_YMax(the_geom)-ST_YMin(the_geom)%20as%20height%20FROM%20landfills%20WHERE%20the_geom%20IS%20NOT%20NULL%20ORDER%20BY%20ST_YMax(the_geom)-ST_YMin(the_geom)%20%20DESC)%2C%20%20geomval%20AS%20(SELECT%20the_geom%2C%20cartodb_id%2C%20row_number()%20OVER%20(ORDER%20BY%20height%20DESC)%20as%20id%20from%20geoms)%2C%20%20positions(cartodb_id%2C%20the_geom%2Cx_offset%2Cy_offset%2Cnew_row%2Crow_offset)%20AS%20(%20%20%20%20%20(SELECT%20cartodb_id%2C%20the_geom%2C%200.0%3A%3Afloat%2C%200.0%3A%3Afloat%2C%20FALSE%2C%202%20from%20geomval%20limit%201)%20%20%20%20UNION%20ALL%20%20%20%20%20%20%20(%20%20%20%20%20%20%20SELECT%20%20%20%20%20%20%20%20(SELECT%20cartodb_id%20FROM%20geomval%20WHERE%20id%20%3D%20p.row_offset)%2C%20%20%20%20%20%20%20%20%20(SELECT%20the_geom%20FROM%20geomval%20WHERE%20id%20%3D%20p.row_offset)%2C%20%20%20%20%20%20%20%20%20%20%20CASE%20WHEN%20%20%20%20%20%20%20%20%20%20%20%20%20p.x_offset%20%3C%20s.d%20%20%20%20%20%20%20%20%20%20THEN%20%20%20%20%20%20%20%20%20%20%20%20(SELECT%20(s.w%2B(ST_XMax(the_geom)%20-%20ST_XMin(the_geom)))%2Bp.x_offset%20FROM%20geomval%20WHERE%20id%20%3D%20p.row_offset)%20%20%20%20%20%20%20%20%20%20ELSE%20%20%20%20%20%20%20%20%20%20%20%200%20%20%20%20%20%20%20%20%20%20%20END%20as%20x_offset%20%20%20%20%20%20%20%20%20%2C%20%20%20%20%20%20%20%20%20%20%20CASE%20WHEN%20%20%20%20%20%20%20%20%20%20%20%20%20p.x_offset%20%3C%20s.d%20%20%20%20%20%20%20%20%20%20THEN%20%20%20%20%20%20%20%20%20%20%20%20p.y_offset%20%20%20%20%20%20%20%20%20%20ELSE%20%20%20%20%20%20%20%20%20%20%20%20(SELECT%20(s.w%2B(ST_YMax(the_geom)%20-%20ST_YMin(the_geom)))%2Bp.y_offset%20FROM%20geomval%20WHERE%20id%20%3D%20p.row_offset)%20%20%20%20%20%20%20%20%20%20END%20as%20y_offset%20%20%20%20%20%20%20%20%20%2C%20%20%20%20%20%20%20%20%20FALSE%2C%20%20%20%20%20%20%20%20p.row_offset%2B1%20%20%20%20%20%20FROM%20%20%20%20%20%20%20%20%20%20positions%20p%2C%20dims%20s%20%20%20%20%20%20%20WHERE%20%20%20%20%20%20%20%20%20p.row_offset%20%3C%20s.rows%20%20%20%20%20%20%20)%20%20%20)%2C%20%20sfact%20AS%20(%20%20%20%20SELECT%20ST_XMin(the_geom)%20as%20x%2C%20ST_YMax(the_geom)%20as%20y%20FROM%20geomval%20LIMIT%201%20%20)%20SELECT%20ST_Transform(ST_Translate(%20%20%20the_geom%2C%20%20%20(x%20-%20ST_XMin(the_geom)%20-%20x_offset)%2C%20%20%20(y%20-%20ST_YMin(the_geom)%20-%20y_offset))%2C3857)%20as%20the_geom_webmercator%2C%20cartodb_id%20FROM%20positions%2Csfact%20order%20by%20row_offset%20asc%20%20%20&sw_lat=42.20665062795391&sw_lon=-72.92724609375&ne_lat=42.455381034748896&ne_lon=-72.14584350585938"></iframe>
       </section>
     </div>
     <script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
