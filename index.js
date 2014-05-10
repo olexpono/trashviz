@@ -38,8 +38,23 @@ app.get("/landfills.json", function(req, res) {
   res.write(landfills_string);
   res.end();
 });
+
 /* Homepage */
 app.get("/", function(req, res) {
+  res.render("overview", {}, function(err, html) {
+    res.end(html);
+  });
+});
+
+/* Maps */
+app.get("/maps", function(req, res) {
+  res.render("maps", {}, function(err, html) {
+    res.end(html);
+  });
+});
+
+/* List */
+app.get("/list", function(req, res) {
   res.render("index", {
     landfills: landfills_data
   }, function(err, html) {
